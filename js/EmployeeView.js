@@ -37,13 +37,9 @@ var EmployeeView = function(employee) {
 	    contact.name = {givenName: employee.firstName, familyName: employee.lastName};
 	    var phoneNumbers = [];
 	    
-	    /* pref field isn't suppoerted on Android 
+	    // DS: pref field isn't supported on Android 
 	    phoneNumbers[0] = new ContactField('work', employee.officePhone, false);
-	    phoneNumbers[1] = new ContactField('mobile', employee.cellPhone, true); // preferred number
-	    */
-	    
-	    phoneNumbers[0] = new ContactField('work', employee.officePhone);
-	    phoneNumbers[1] = new ContactField('mobile', employee.cellPhone); // preferred number
+	    phoneNumbers[1] = new ContactField('mobile', employee.cellPhone, false); // preferred number
 	    
 	    contact.phoneNumbers = phoneNumbers;
 	    contact.save(function () {
