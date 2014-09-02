@@ -36,8 +36,15 @@ var EmployeeView = function(employee) {
 	    var contact = navigator.contacts.create();
 	    contact.name = {givenName: employee.firstName, familyName: employee.lastName};
 	    var phoneNumbers = [];
+	    
+	    /* pref field isn't suppoerted on Android 
 	    phoneNumbers[0] = new ContactField('work', employee.officePhone, false);
 	    phoneNumbers[1] = new ContactField('mobile', employee.cellPhone, true); // preferred number
+	    */
+	    
+	    phoneNumbers[0] = new ContactField('work', employee.officePhone);
+	    phoneNumbers[1] = new ContactField('mobile', employee.cellPhone); // preferred number
+	    
 	    contact.phoneNumbers = phoneNumbers;
 	    contact.save(function () {
 	    	app.showAlert("Contact Saved", "Info");
